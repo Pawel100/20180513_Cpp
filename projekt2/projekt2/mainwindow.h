@@ -7,16 +7,30 @@ namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow
+class MainWindow : public QMainWindow // dwukropek oznacza dziedziczenie
 {
-    Q_OBJECT
+    Q_OBJECT // jest to znacznik dla Qt który oznacza aby to potraktować specjalnie
 
-public:
+public: // sekcja z publicznymi danymi
     explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+    ~MainWindow(); // tylda oznacza destruktor
 
-private:
-    Ui::MainWindow *ui;
+private slots:
+    void on_actionCopy_triggered();
+
+    void on_actionCut_triggered();
+
+    void on_actionPaste_triggered();
+
+    void on_actionundo_triggered();
+
+    void on_actionNew_triggered();
+
+    void on_actionSave_As_triggered();
+
+private: // sekcja z prywatnymi danymi
+    Ui::MainWindow *ui; // *ui jest wskaźnikiem do MainWindow
+    void saveToFile(QString filePath);
 };
 
 #endif // MAINWINDOW_H
